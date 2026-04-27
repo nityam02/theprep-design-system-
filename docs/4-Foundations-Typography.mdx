@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Typography" />
+
+<div style={{ maxWidth: 880, padding: '32px 0', fontFamily: 'var(--font-family-base)', color: 'var(--color-text-primary)' }}>
+
+<p style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-secondary)', margin: 0 }}>Foundations</p>
+<h1 style={{ fontWeight: 900, fontSize: 40, lineHeight: '48px', letterSpacing: '-0.02em', margin: '8px 0 16px' }}>Typography</h1>
+<p style={{ fontSize: 18, lineHeight: '28px', color: 'var(--color-text-secondary)', margin: '0 0 32px', maxWidth: 640 }}>
+  One family — Inter — across nine roles. Each role pairs a weight, size, line-height, and tracking. Components reference the role; the values stay in lockstep.
+</p>
+
+{[
+  { role: 'display', label: 'Display', weight: 900, size: 48, line: 56, tracking: '-0.02em', sample: 'When you pass.' },
+  { role: 'h1', label: 'H1', weight: 700, size: 40, line: 48, tracking: '-0.02em', sample: 'Your plan, in one place.' },
+  { role: 'h2', label: 'H2', weight: 700, size: 32, line: 40, tracking: '-0.01em', sample: 'A single source of truth.' },
+  { role: 'h3', label: 'H3 — Card title', weight: 700, size: 20, line: 28, tracking: '0', sample: 'Last will and testament' },
+  { role: 'subtitle', label: 'Subtitle', weight: 600, size: 16, line: 24, tracking: '0', sample: 'Reviewed by Maria Olsen' },
+  { role: 'body', label: 'Body', weight: 400, size: 16, line: 24, tracking: '0', sample: 'Most people overlook digital assets — let\'s make sure yours are covered.' },
+  { role: 'bodySm', label: 'Body small', weight: 500, size: 14, line: 20, tracking: '0', sample: 'Used inside cards, lists, and form helpers.' },
+  { role: 'label', label: 'Label · Nav', weight: 500, size: 13, line: 16, tracking: '0.05em', sample: 'DOCUMENTS', upper: true },
+  { role: 'caption', label: 'Caption', weight: 400, size: 12, line: 16, tracking: '0.02em', sample: 'Updated 14:02 · Maria Olsen' },
+].map((t) => (
+  <div key={t.role} style={{ display: 'grid', gridTemplateColumns: '180px 1fr', gap: 24, padding: '20px 0', borderTop: '1px solid var(--color-border-subtle)' }}>
+    <div>
+      <div style={{ fontWeight: 600, fontSize: 14 }}>{t.label}</div>
+      <div style={{ fontFamily: 'var(--font-family-mono)', fontSize: 12, color: 'var(--color-text-secondary)', marginTop: 4, lineHeight: 1.6 }}>
+        {t.weight} / {t.size}px<br/>
+        line {t.line}px<br/>
+        track {t.tracking}
+      </div>
+    </div>
+    <div style={{
+      fontWeight: t.weight,
+      fontSize: t.size,
+      lineHeight: `${t.line}px`,
+      letterSpacing: t.tracking,
+      textTransform: t.upper ? 'uppercase' : 'none',
+      color: 'var(--color-text-primary)',
+    }}>
+      {t.sample}
+    </div>
+  </div>
+))}
+
+<div style={{ marginTop: 32, padding: 24, background: 'var(--color-surface-canvas)', borderRadius: 16 }}>
+  <h3 style={{ fontWeight: 700, fontSize: 20, margin: '0 0 12px' }}>Why Inter</h3>
+  <p style={{ color: 'var(--color-text-secondary)', margin: 0, lineHeight: '24px', fontSize: 16 }}>
+    Inter is neutral, dense, and renders crisply at every size we use. It carries no architectural baggage from print, which makes it the right vehicle for the editorial-precision principle. Variable axes are available but we restrict ourselves to four discrete weights for clarity in the system.
+  </p>
+</div>
+
+</div>

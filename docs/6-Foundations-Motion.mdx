@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Motion" />
+
+<div style={{ maxWidth: 880, padding: '32px 0', fontFamily: 'var(--font-family-base)', color: 'var(--color-text-primary)' }}>
+
+<p style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-secondary)', margin: 0 }}>Foundations</p>
+<h1 style={{ fontWeight: 900, fontSize: 40, lineHeight: '48px', letterSpacing: '-0.02em', margin: '8px 0 16px' }}>Motion</h1>
+<p style={{ fontSize: 18, lineHeight: '28px', color: 'var(--color-text-secondary)', margin: '0 0 32px', maxWidth: 640 }}>
+  Motion is paced by intent. Fast for feedback. Base for transitions. Slow and deliberate for moments that ask for trust. Hover the demos below to feel each duration.
+</p>
+
+## Durations
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16, marginBottom: 40 }}>
+{[
+  { name: 'instant', ms: 80, use: 'Pressed states. Almost imperceptible.' },
+  { name: 'fast', ms: 120, use: 'Hover, focus. Acknowledgement.' },
+  { name: 'base', ms: 200, use: 'Most transitions. The default.' },
+  { name: 'slow', ms: 320, use: 'Layered surfaces appearing.' },
+  { name: 'deliberate', ms: 480, use: 'Important reveals. Trust moments.' },
+].map((t) => (
+  <div key={t.name} style={{ padding: 16, background: 'var(--color-surface-default)', borderRadius: 8, border: '1px solid var(--color-border-subtle)' }}>
+    <div style={{ fontFamily: 'var(--font-family-mono)', fontSize: 13, color: 'var(--color-action-primary)', marginBottom: 4 }}>{t.ms}ms</div>
+    <div style={{ fontWeight: 600, fontSize: 16 }}>duration-{t.name}</div>
+    <p style={{ color: 'var(--color-text-secondary)', margin: '8px 0 12px', fontSize: 14, lineHeight: '20px' }}>{t.use}</p>
+    <div className={`motion-demo motion-demo-${t.name}`} style={{
+      height: 8, background: 'var(--color-surface-accent-soft)', borderRadius: 99, overflow: 'hidden', position: 'relative',
+    }}>
+      <div style={{
+        height: '100%', width: '40%', background: 'var(--color-action-primary)', borderRadius: 99,
+        transformOrigin: 'left center',
+        animation: `slide ${t.ms}ms cubic-bezier(0.2, 0, 0, 1) infinite alternate`,
+      }} />
+    </div>
+  </div>
+))}
+</div>
+
+<style>{`
+  @keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(150%); }
+  }
+`}</style>
+
+## Easings
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
+{[
+  { name: 'standard', curve: 'cubic-bezier(0.2, 0, 0, 1)', use: 'The default. Use unless you have a reason not to.' },
+  { name: 'emphasized', curve: 'cubic-bezier(0.3, 0, 0.1, 1)', use: 'Heavier surfaces. Larger moves.' },
+  { name: 'decelerate', curve: 'cubic-bezier(0, 0, 0, 1)', use: 'Things entering the screen.' },
+  { name: 'accelerate', curve: 'cubic-bezier(0.3, 0, 1, 1)', use: 'Things leaving the screen.' },
+].map((t) => (
+  <div key={t.name} style={{ padding: 16, background: 'var(--color-surface-default)', borderRadius: 8, border: '1px solid var(--color-border-subtle)' }}>
+    <div style={{ fontWeight: 600, fontSize: 16 }}>easing-{t.name}</div>
+    <code style={{ fontFamily: 'var(--font-family-mono)', fontSize: 11, color: 'var(--color-text-secondary)', display: 'block', marginTop: 4, wordBreak: 'break-word' }}>{t.curve}</code>
+    <p style={{ color: 'var(--color-text-secondary)', margin: '8px 0 0', fontSize: 14, lineHeight: '20px' }}>{t.use}</p>
+  </div>
+))}
+</div>
+
+<div style={{ marginTop: 32, padding: 16, background: 'var(--color-surface-canvas)', borderRadius: 8, fontSize: 14, color: 'var(--color-text-secondary)' }}>
+  <strong style={{ color: 'var(--color-text-primary)' }}>Reduced motion is honoured globally.</strong> Every transition and animation is wrapped by a <code style={{ background: 'var(--color-surface-default)', padding: '2px 6px', borderRadius: 4, fontSize: 13 }}>prefers-reduced-motion</code> media query that collapses durations to near-zero.
+</div>
+
+</div>

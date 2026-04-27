@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Color" />
+
+<div style={{ maxWidth: 880, padding: '32px 0', fontFamily: 'var(--font-family-base)', color: 'var(--color-text-primary)' }}>
+
+<p style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-secondary)', margin: 0 }}>Foundations</p>
+<h1 style={{ fontWeight: 900, fontSize: 40, lineHeight: '48px', letterSpacing: '-0.02em', margin: '8px 0 16px' }}>Colour</h1>
+<p style={{ fontSize: 18, lineHeight: '28px', color: 'var(--color-text-secondary)', margin: '0 0 32px', maxWidth: 640 }}>
+  Every token carries a role, not a look. <code style={{ background: 'var(--color-surface-subtle)', padding: '2px 6px', borderRadius: 4, fontSize: 14 }}>action-primary</code> is the colour of forward motion. <code style={{ background: 'var(--color-surface-subtle)', padding: '2px 6px', borderRadius: 4, fontSize: 14 }}>surface-authority</code> is the colour of legal weight. Components reference the role; the value can change without breaking anything.
+</p>
+
+## Action
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12, marginBottom: 32 }}>
+  {[
+    { name: 'action-primary', value: '#1032CF', on: '#FFFFFF', ratio: '8.62 : 1', note: 'AAA on white' },
+    { name: 'action-primary-hover', value: '#0A26A8', on: '#FFFFFF', ratio: '11.4 : 1', note: 'AAA on white' },
+    { name: 'action-primary-pressed', value: '#001F9D', on: '#FFFFFF', ratio: '12.5 : 1', note: 'AAA on white' },
+  ].map((t) => (
+    <div key={t.name} style={{ background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8, overflow: 'hidden' }}>
+      <div style={{ background: t.value, color: t.on, padding: 16, fontSize: 13, fontFamily: 'var(--font-family-mono)' }}>{t.value}</div>
+      <div style={{ padding: 12 }}>
+        <div style={{ fontWeight: 600, fontSize: 13 }}>{t.name}</div>
+        <div style={{ color: 'var(--color-text-secondary)', fontSize: 12, marginTop: 2 }}>{t.ratio} · {t.note}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Authority
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12, marginBottom: 32 }}>
+  {[
+    { name: 'surface-authority', value: '#001F9D', on: '#FFFFFF', ratio: '12.5 : 1', note: 'AAA on white' },
+  ].map((t) => (
+    <div key={t.name} style={{ background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8, overflow: 'hidden' }}>
+      <div style={{ background: t.value, color: t.on, padding: 16, fontSize: 13, fontFamily: 'var(--font-family-mono)' }}>{t.value}</div>
+      <div style={{ padding: 12 }}>
+        <div style={{ fontWeight: 600, fontSize: 13 }}>{t.name}</div>
+        <div style={{ color: 'var(--color-text-secondary)', fontSize: 12, marginTop: 2 }}>{t.ratio} · {t.note}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Surfaces
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12, marginBottom: 32 }}>
+  {[
+    { name: 'surface-default', value: '#FFFFFF', on: '#1A1618', ratio: '17.4 : 1', note: 'on text-primary' },
+    { name: 'surface-canvas', value: '#FFF8F9', on: '#1A1618', ratio: '17.0 : 1', note: 'on text-primary' },
+    { name: 'surface-subtle', value: '#FFF0F5', on: '#1A1618', ratio: '16.4 : 1', note: 'on text-primary' },
+    { name: 'surface-accent-soft', value: '#FFE8F2', on: '#001F9D', ratio: '11.7 : 1', note: 'AAA on authority' },
+  ].map((t) => (
+    <div key={t.name} style={{ background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8, overflow: 'hidden' }}>
+      <div style={{ background: t.value, color: t.on, padding: 16, fontSize: 13, fontFamily: 'var(--font-family-mono)' }}>{t.value}</div>
+      <div style={{ padding: 12 }}>
+        <div style={{ fontWeight: 600, fontSize: 13 }}>{t.name}</div>
+        <div style={{ color: 'var(--color-text-secondary)', fontSize: 12, marginTop: 2 }}>{t.ratio} · {t.note}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Text
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12, marginBottom: 32 }}>
+  {[
+    { name: 'text-primary', value: '#1A1618', on: '#FFF8F9', ratio: '17.0 : 1', note: 'AAA on canvas' },
+    { name: 'text-secondary', value: '#765568', on: '#FFF8F9', ratio: '5.4 : 1', note: 'AA on canvas' },
+    { name: 'text-tertiary', value: '#A48A99', on: '#FFFFFF', ratio: '3.2 : 1', note: 'AA large only' },
+  ].map((t) => (
+    <div key={t.name} style={{ background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8, overflow: 'hidden' }}>
+      <div style={{ background: '#FFF8F9', color: t.value, padding: 16, fontSize: 16, fontWeight: 600 }}>The quiet weight of decisions made now.</div>
+      <div style={{ padding: 12 }}>
+        <div style={{ fontWeight: 600, fontSize: 13 }}>{t.name}</div>
+        <div style={{ color: 'var(--color-text-secondary)', fontSize: 12, marginTop: 2 }}>{t.ratio} · {t.note}</div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Status
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12, marginBottom: 32 }}>
+  {[
+    { name: 'status-info', value: '#001F9D', surface: '#E5EAFF' },
+    { name: 'status-success', value: '#2E7D32', surface: '#E8F5E9' },
+    { name: 'status-warning', value: '#ED6C02', surface: '#FFF3E0' },
+    { name: 'status-danger', value: '#C62828', surface: '#FFEBEE' },
+  ].map((t) => (
+    <div key={t.name} style={{ background: t.surface, padding: 16, borderRadius: 8 }}>
+      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: t.value, fontWeight: 600, fontSize: 14 }}>
+        <span style={{ width: 8, height: 8, background: t.value, borderRadius: 99 }} />
+        {t.name}
+      </div>
+    </div>
+  ))}
+</div>
+
+<div style={{ marginTop: 32, padding: 16, background: 'var(--color-surface-canvas)', borderRadius: 8, fontSize: 14, color: 'var(--color-text-secondary)' }}>
+  <strong style={{ color: 'var(--color-text-primary)' }}>Contrast ratios shown above are calculated against the most common pairing.</strong> Every interactive component pulls only from token pairs that pass WCAG AA at minimum.
+</div>
+
+</div>

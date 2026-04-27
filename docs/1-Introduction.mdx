@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+<div style={{ maxWidth: 720, padding: '32px 0', fontFamily: 'var(--font-family-base)', color: 'var(--color-text-primary)' }}>
+
+<p style={{
+  fontSize: 13,
+  fontWeight: 500,
+  letterSpacing: '0.05em',
+  textTransform: 'uppercase',
+  color: 'var(--color-text-secondary)',
+  margin: 0
+}}>
+thePREP — Design System
+</p>
+
+<h1 style={{ fontWeight: 900, fontSize: 48, lineHeight: '56px', letterSpacing: '-0.02em', margin: '8px 0 24px' }}>
+The Legal Architect.
+</h1>
+
+<p style={{ fontSize: 20, lineHeight: '32px', color: 'var(--color-text-secondary)', margin: '0 0 32px' }}>
+Legal and life-planning decisions are heavy. The interface that holds them shouldn't be. This system gives thePREP a single language — colour, type, motion, voice — so every screen feels precise as an architect's plan and as approachable as a well-edited magazine.
+</p>
+
+## Why this exists
+
+A design system is not a component library. It is a **language and a contract** — a shared way of describing what something *means* before describing what it *looks like*. Cards, colours, and easing curves are the alphabet; the contract is what makes them combine into legible product.
+
+This system carries three contracts:
+
+1. **Tokens describe role, not appearance.** `surface-authority` is the colour of legal weight. Today it's deep navy; tomorrow it could shift, and every component would follow.
+2. **Foundations come before components.** You cannot build a Card before deciding what *raised* means. Read the Foundations section first.
+3. **Accessibility is a default, not a feature.** Every colour pair is contrast-checked. Every transition respects `prefers-reduced-motion`. Every interactive element has a visible focus state.
+
+## How to read this Storybook
+
+<table style={{ borderCollapse: 'collapse', marginTop: 16, fontSize: 14 }}>
+<tbody>
+  <tr>
+    <td style={{ padding: '12px 16px 12px 0', verticalAlign: 'top', width: 180, fontWeight: 600 }}>Principles</td>
+    <td style={{ padding: '12px 0', color: 'var(--color-text-secondary)' }}>The four ideas that shape every decision.</td>
+  </tr>
+  <tr>
+    <td style={{ padding: '12px 16px 12px 0', verticalAlign: 'top', fontWeight: 600 }}>Foundations</td>
+    <td style={{ padding: '12px 0', color: 'var(--color-text-secondary)' }}>Colour, type, spacing, elevation, motion. Source-of-truth tokens.</td>
+  </tr>
+  <tr>
+    <td style={{ padding: '12px 16px 12px 0', verticalAlign: 'top', fontWeight: 600 }}>Voice & Tone</td>
+    <td style={{ padding: '12px 0', color: 'var(--color-text-secondary)' }}>The words that carry the design — direct, reassuring, authoritative.</td>
+  </tr>
+  <tr>
+    <td style={{ padding: '12px 16px 12px 0', verticalAlign: 'top', fontWeight: 600 }}>Components</td>
+    <td style={{ padding: '12px 0', color: 'var(--color-text-secondary)' }}>The building blocks. Each documents its anatomy and states.</td>
+  </tr>
+  <tr>
+    <td style={{ padding: '12px 16px 12px 0', verticalAlign: 'top', fontWeight: 600 }}>Compositions</td>
+    <td style={{ padding: '12px 0', color: 'var(--color-text-secondary)' }}>Real screens — Dashboard, Intake, Lawyer Review — built only from the system.</td>
+  </tr>
+</tbody>
+</table>
+
+<div style={{ marginTop: 48, padding: 24, background: 'var(--color-surface-canvas)', borderRadius: 16, borderLeft: '3px solid var(--color-action-primary)' }}>
+<p style={{ margin: 0, fontStyle: 'italic', color: 'var(--color-text-secondary)' }}>
+"One system ≠ identical screens. One system = a shared language and a shared contract." — what we learned from looking at how Airbnb's DLS thinks about the problem, applied to the unique gravity of legal work.
+</p>
+</div>
+
+</div>

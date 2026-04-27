@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Accessibility" />
+
+<div style={{ maxWidth: 760, padding: '32px 0', fontFamily: 'var(--font-family-base)', color: 'var(--color-text-primary)' }}>
+
+<p style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-text-secondary)', margin: 0 }}>Accessibility</p>
+<h1 style={{ fontWeight: 900, fontSize: 40, lineHeight: '48px', letterSpacing: '-0.02em', margin: '8px 0 16px' }}>Built in, not bolted on.</h1>
+<p style={{ fontSize: 18, lineHeight: '28px', color: 'var(--color-text-secondary)', margin: '0 0 32px' }}>
+  thePREP is a product where mistakes have legal consequences. Accessibility is not negotiable. Every commitment below is encoded in the system itself, not asked of designers as a checklist.
+</p>
+
+<div style={{ display: 'grid', gap: 16 }}>
+
+<div style={{ padding: 20, background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8 }}>
+  <div style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-action-primary)', marginBottom: 8 }}>Colour contrast</div>
+  <h3 style={{ fontWeight: 700, fontSize: 18, margin: '0 0 8px' }}>WCAG AA on every token pair</h3>
+  <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 15, lineHeight: '24px' }}>
+    Body text pairs achieve at least 4.5 : 1. Large text pairs achieve 3 : 1. The Foundations / Colour page lists every ratio so designers can verify before shipping.
+  </p>
+</div>
+
+<div style={{ padding: 20, background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8 }}>
+  <div style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-action-primary)', marginBottom: 8 }}>Focus states</div>
+  <h3 style={{ fontWeight: 700, fontSize: 18, margin: '0 0 8px' }}>Visible for keyboard, invisible for mouse</h3>
+  <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 15, lineHeight: '24px' }}>
+    Every interactive element uses <code style={{ background: 'var(--color-surface-canvas)', padding: '2px 6px', borderRadius: 4, fontSize: 13 }}>:focus-visible</code> with a 2px outline in the focus-ring token. Mouse users never see a stray ring; keyboard users always know where they are.
+  </p>
+</div>
+
+<div style={{ padding: 20, background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8 }}>
+  <div style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-action-primary)', marginBottom: 8 }}>Motion</div>
+  <h3 style={{ fontWeight: 700, fontSize: 18, margin: '0 0 8px' }}>Reduced motion is global</h3>
+  <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 15, lineHeight: '24px' }}>
+    A single <code style={{ background: 'var(--color-surface-canvas)', padding: '2px 6px', borderRadius: 4, fontSize: 13 }}>prefers-reduced-motion</code> media query in <code style={{ background: 'var(--color-surface-canvas)', padding: '2px 6px', borderRadius: 4, fontSize: 13 }}>global.css</code> collapses every transition and animation. No component opts out.
+  </p>
+</div>
+
+<div style={{ padding: 20, background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8 }}>
+  <div style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-action-primary)', marginBottom: 8 }}>Semantic structure</div>
+  <h3 style={{ fontWeight: 700, fontSize: 18, margin: '0 0 8px' }}>Roles before styles</h3>
+  <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 15, lineHeight: '24px' }}>
+    Inputs always carry a real <code style={{ background: 'var(--color-surface-canvas)', padding: '2px 6px', borderRadius: 4, fontSize: 13 }}>&lt;label&gt;</code>. Stepper uses <code style={{ background: 'var(--color-surface-canvas)', padding: '2px 6px', borderRadius: 4, fontSize: 13 }}>aria-current="step"</code>. ChatMessage announces its author. Components ship correct semantics by default.
+  </p>
+</div>
+
+<div style={{ padding: 20, background: 'var(--color-surface-default)', border: '1px solid var(--color-border-subtle)', borderRadius: 8 }}>
+  <div style={{ fontSize: 13, fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--color-action-primary)', marginBottom: 8 }}>Touch targets</div>
+  <h3 style={{ fontWeight: 700, fontSize: 18, margin: '0 0 8px' }}>Minimum 40 × 40</h3>
+  <p style={{ margin: 0, color: 'var(--color-text-secondary)', fontSize: 15, lineHeight: '24px' }}>
+    Every Button, navigation link, and tappable region clears 40px on its smaller axis. Inputs are 48px tall by default for older eyes and trembling hands.
+  </p>
+</div>
+
+</div>
+
+</div>

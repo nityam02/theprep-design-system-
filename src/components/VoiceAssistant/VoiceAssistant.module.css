@@ -1,0 +1,237 @@
+/* ── Shell layout ── */
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+/* ── The orb ── */
+
+.orb {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: var(--radius-pill);
+  isolation: isolate;
+  filter: saturate(110%);
+}
+
+.size-compact .orb { width: 160px; height: 160px; }
+.size-hero .orb    { width: 320px; height: 320px; }
+
+/*
+ * The orb is composed of four stacked layers, each a circle:
+ *   halo      — outermost soft glow that expands when listening/speaking
+ *   cloud     — slow-rotating warm tint that gives "weather"
+ *   core      — main saturated body
+ *   highlight — small near-white specular blob (top-right)
+ */
+
+.halo,
+.cloud,
+.core,
+.highlight {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-pill);
+}
+
+.halo {
+  inset: -12%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--color-action-primary) 0%,
+    rgba(16, 50, 207, 0.5) 35%,
+    transparent 70%
+  );
+  filter: blur(24px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.cloud {
+  background:
+    radial-gradient(circle at 30% 70%, rgba(255, 232, 242, 0.55) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(255, 248, 249, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, var(--color-action-primary) 0%, var(--color-surface-authority) 100%);
+  z-index: 1;
+}
+
+.core {
+  inset: 14%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(255, 255, 255, 0.18) 0%,
+    transparent 35%
+  ),
+  radial-gradient(circle at 50% 50%, var(--color-action-primary) 0%, var(--color-surface-authority) 80%);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  z-index: 2;
+}
+
+.highlight {
+  inset: 12% 50% 50% 12%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.0) 60%
+  );
+  mix-blend-mode: screen;
+  z-index: 3;
+}
+
+/* ── State-driven motion ── */
+
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.025); }
+}
+@keyframes cloud-drift {
+  0%   { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes halo-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.55; }
+  50%      { transform: scale(1.12); opacity: 0.85; }
+}
+@keyframes orb-think {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(0.985); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+@keyframes core-speak {
+  0%, 100% { transform: scale(1)    translate(0, 0); }
+  25%      { transform: scale(1.05) translate(2%, -2%); }
+  50%      { transform: scale(0.96) translate(-2%, 2%); }
+  75%      { transform: scale(1.04) translate(-2%, -1%); }
+}
+
+/* idle: gentle breathe */
+.state-idle .cloud { animation: cloud-drift 60s linear infinite; }
+.state-idle .core  { animation: orb-breathe 8s var(--easing-standard) infinite; }
+.state-idle .halo  { opacity: 0.4; }
+
+/* listening: bigger halo pulse, faster cloud */
+.state-listening .cloud { animation: cloud-drift 30s linear infinite; }
+.state-listening .core  { animation: orb-breathe 2.4s var(--easing-emphasized) infinite; }
+.state-listening .halo  { animation: halo-pulse 2.4s var(--easing-emphasized) infinite; }
+
+/* thinking: slow rotation, dimmer halo */
+.state-thinking .cloud { animation: cloud-drift 12s linear infinite; }
+.state-thinking .core  { animation: orb-think 3.2s var(--easing-standard) infinite; }
+.state-thinking .halo  { opacity: 0.35; }
+
+/* speaking: organic wave distortion */
+.state-speaking .cloud { animation: cloud-drift 18s linear infinite; }
+.state-speaking .core  { animation: core-speak 1.6s var(--easing-emphasized) infinite; }
+.state-speaking .halo  { animation: halo-pulse 1.6s var(--easing-emphasized) infinite; }
+
+/* ── Meta block ── */
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-0-5);
+  text-align: center;
+}
+
+.assistantName {
+  font-weight: var(--type-subtitle-weight);
+  font-size: var(--type-subtitle-size);
+  line-height: var(--type-subtitle-line);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--type-label-size);
+  font-weight: var(--type-label-weight);
+  letter-spacing: var(--type-label-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+}
+
+.dot-listening { animation: dot-blink 1.2s var(--easing-standard) infinite; color: var(--color-action-primary); }
+.dot-thinking  { animation: dot-blink 0.6s var(--easing-standard) infinite; color: var(--color-text-secondary); }
+.dot-speaking  { color: var(--color-status-success); }
+.dot-idle      { color: var(--color-text-tertiary); }
+
+@keyframes dot-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
+}
+
+/* ── Optional transcript ── */
+
+.transcript {
+  max-width: 460px;
+  text-align: center;
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ── Controls ── */
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.control {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-default);
+  color: var(--color-text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--elevation-raised);
+  transition:
+    background var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard),
+    transform var(--duration-fast) var(--easing-standard);
+  cursor: pointer;
+}
+
+.control:hover {
+  background: var(--color-surface-canvas);
+}
+
+.control:active {
+  transform: scale(0.96);
+}
+
+.controlMuted {
+  background: var(--color-surface-accent-soft);
+  color: var(--color-action-primary);
+}
+
+.controlEnd {
+  background: var(--color-status-danger);
+  color: var(--color-text-inverse);
+}
+
+.controlEnd:hover {
+  background: #A91F1F;
+}
