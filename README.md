@@ -50,7 +50,3 @@ Tokens drive everything. Components reference CSS variables, never raw values. C
 - Vite 8 · Storybook 10
 - CSS Modules (chosen over Tailwind so tokens stay the contract)
 - Inter via `@fontsource/inter` (self-hosted, no runtime CDN)
-
-## Author
-
-A design-direction proposal for Øystein and the thePREP team.
